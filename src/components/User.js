@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 function User({ user }) {
-
+    console.log(user)
     return (
         <div className="User">
             <div>{user.first_name}</div>

@@ -1,40 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import User from './User'
+import User from './User';
+import axios from 'axios';
 
-function Feed({}) {
+function Feed() {
 
-    const [userArray, setUserArray] = useState([
-        {
-            first_name: "Ryan",
-            last_name: "Z",
-            email: "",
-            password: "",
-            city:"",
-            state:"",
-            github_url:"",
-        },
-        {
-            first_name: "Jared",
-            last_name: "D",
-            email: "",
-            password: "",
-            city:"",
-            state:"",
-            github_url:"",
-        },
-        {
-            first_name: "Austin",
-            last_name: "A",
-            email: "",
-            password: "",
-            city:"",
-            state:"",
-            github_url:"",
-        },
-    ])
+    const [userArray, setUserArray] = useState([])
 
     useEffect(() => {
-        // axios.get()
+        axios.get('https://practice-be.herokuapp.com')
+        .then(res => {
+            console.log(res)
+            setUserArray(res.users)
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
+
     })
 
     return (
